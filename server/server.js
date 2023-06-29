@@ -6,6 +6,9 @@ const db = require('./config/keys').MongoURI;
 
 const { User, Crud } = require('./model/login_regis');
 
+//deploy
+
+
 //body Parser
 app.use(express.urlencoded({
     extended: true

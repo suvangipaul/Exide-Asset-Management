@@ -1,0 +1,34 @@
+[{
+        "id": 1,
+        "modelName": "Samsung Odyssey G9",
+        "location": "IT Building 2nd Floor Table 6 Row 2",
+        "assetTag": "ST9X349",
+        "serialNumber": "EXY123945",
+        "warranty": "28th July 2030",
+        "category": "In-Use",
+        "specification": "49 inches.240 Hz.5K.HDMI.VGA"
+
+    },
+    {
+        "id": 2,
+        "modelName": "LG UltraWide Curved HDR",
+        "location": "Production Unit Cell 2",
+        "assetTag": "ST9D456",
+        "serialNumber": "EXY145685",
+        "warranty": "21th June 2030",
+        "category": "In-Use",
+        "specification": "50 inches.240 Hz.5K.HDMI.VGA"
+
+    },
+    {
+        "id": 3,
+        "modelName": "Lenovo Q-Series",
+        "location": "Store House",
+        "assetTag": "ST4S349",
+        "serialNumber": "EXY129865",
+        "warranty": "20th July 2030",
+        "category": "Stock",
+        "specification": "24 inches.240 Hz.5K.HDMI.VGA"
+
+    }
+]

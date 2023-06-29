@@ -1,0 +1,59 @@
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
+    list-style-type: none;
+    color: black;
+}
+
+.card {
+    position: relative;
+    display: block;
+    height: auto;
+    width: auto;
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px black solid;
+}
+
+.card__overlay {
+    padding: 1rem;
+}
+
+.card__header {
+    padding: 1rem;
+}
+
+.card__title {
+    font-size: 1.5rem;
+    margin: 0 0 .3em;
+    color: black;
+}
+
+.card__header-text {
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__header-text span {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: grey;
+}
+
+.filter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}

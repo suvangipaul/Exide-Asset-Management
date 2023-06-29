@@ -1,0 +1,27 @@
+.button {
+    padding: 20px 40px;
+    font-size: 16px;
+    background-color: green;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-container1 {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 20px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .button {
+        position: static;
+        transform: none;
+    }
+}

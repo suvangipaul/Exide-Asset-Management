@@ -1,0 +1,47 @@
+header {
+    padding: 1rem 4rem;
+    animation: TransitionFromTop 1s;
+}
+
+.logo {
+    font-family: "Londrina Solid", cursive;
+}
+
+.logo span {
+    background-color: rgb(19, 112, 243);
+    padding: .05rem .2rem;
+    border-radius: 4px;
+    margin-left: .2rem;
+}
+
+.header-content {
+    display: flex;
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    justify-content: flex-start;
+    border-bottom: 2px solid black;
+    color: black;
+    align-items: center;
+}
+
+.header-content a {
+    text-decoration: none;
+    color: black;
+}
+
+.header-content p {
+    font-size: 1.4rem;
+}
+
+.header-left img {
+    width: 5rem;
+    height: 3rem;
+}
+
+.header-middle {
+    margin-left: 40%;
+}
+
+.header-middle h1 {
+    text-align: center;
+}

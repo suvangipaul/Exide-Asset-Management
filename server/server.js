@@ -54,6 +54,7 @@ app.post('/', (req, res) => {
     const { userName, pass } = req.body;
     console.log(userName, ' ', pass);
 
+    console.log({ userName: userName, password: pass })
     User.findOne({ userName: userName, password: pass })
         .then(user => {
             if (!user)

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors')
+const cors = require('cors')
 const mongoose = require('mongoose');
 
 const db = require('./config/keys').MongoURI;
@@ -8,11 +8,7 @@ const db = require('./config/keys').MongoURI;
 const { User, Crud } = require('./model/login_regis');
 
 //deploy
-// app.use(cors({
-//     origin: [""],
-//     methods: ["POST", "GET"],
-//     credentials: true
-// }));
+app.use(cors());
 
 //body Parser
 app.use(express.urlencoded({

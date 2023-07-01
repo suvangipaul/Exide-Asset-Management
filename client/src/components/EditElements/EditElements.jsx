@@ -48,7 +48,9 @@ const EditElements = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/FuncPage/editelements");
+        const response = await fetch(
+          "https://exide-asset-management.onrender.com/FuncPage/editelements"
+        );
         if (!response.ok) {
           throw new Error("Request failed");
         }

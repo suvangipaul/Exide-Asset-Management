@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./EditElements.css";
+import axios from "axios";
 
 const EditElements = () => {
   const [selectedItem, setSelectedItem] = useState("");
@@ -100,16 +101,39 @@ const EditElements = () => {
       value: selectedValue,
     };
 
-    fetch("/FuncPage/editelements", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    //   fetch("/FuncPage/editelements", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data))
+    //     .catch((err) => console.log(err));
+    // };
+
+    axios
+      .put(
+        "https://exide-asset-management.onrender.com//FuncPage/editelements",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        showSuccessMessage(); // Display success message
+        setTimeout(() => {
+          window.location.reload(); // Refresh the page
+        }, 1000); // Wait for 1 second before refreshing
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleFormSubmit = (e) => {
@@ -137,13 +161,16 @@ const EditElements = () => {
       assetTag: generatedInput,
     };
 
-    fetch("/FuncPage/editelements", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      "https://exide-asset-management.onrender.com//FuncPage/editelements",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

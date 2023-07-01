@@ -9,6 +9,7 @@ import {
 } from "@react-pdf/renderer";
 import { CSVLink } from "react-csv";
 import "./Report.css";
+import axios from "axios";
 
 const Report = () => {
   const [data, setData] = useState([]);
@@ -53,18 +54,37 @@ const Report = () => {
       value: type,
     };
 
-    fetch("/FuncPage/report", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    //   fetch("https://exide-asset-management.onrender.com/FuncPage/report", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       setFilteredData(data);
+    //     })
+    //     .catch((err) => console.log(err));
+    // };
+
+    axios
+      .post(
+        "https://exide-asset-management.onrender.com/FuncPage/report",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
         setFilteredData(data);
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const styles = StyleSheet.create({

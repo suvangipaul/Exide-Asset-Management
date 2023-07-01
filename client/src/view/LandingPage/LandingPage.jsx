@@ -3,6 +3,7 @@ import Cards from "../../components/Cards/Cards.jsx";
 import Header from "../../components/header/header.jsx";
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
+import axios from "axios";
 
 function LandingPage() {
   const [desktop, newDesktop] = useState(0);
@@ -11,15 +12,35 @@ function LandingPage() {
   const [printer, newPrinter] = useState(0);
   const [nswitch, newSwitch] = useState(0);
 
+  // useEffect(() => {
+  //   fetch("/LandingPage", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       data.map((no, index) => {
+  //         if (index === 0) newDesktop(no);
+  //         else if (index === 1) newLaptop(no);
+  //         else if (index === 2) newServer(no);
+  //         else if (index === 3) newPrinter(no);
+  //         else if (index === 4) newSwitch(no);
+  //       });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   useEffect(() => {
-    fetch("/LandingPage", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    axios
+      .get("https://exide-asset-management.onrender.com/LandingPage", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        const data = response.data;
         data.map((no, index) => {
           if (index === 0) newDesktop(no);
           else if (index === 1) newLaptop(no);
@@ -28,7 +49,9 @@ function LandingPage() {
           else if (index === 4) newSwitch(no);
         });
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return (

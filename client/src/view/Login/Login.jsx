@@ -109,7 +109,7 @@ const Login = () => {
     // };
 
     axios
-      .post("/", data, {
+      .post("https://exide-asset-management.onrender.com/", data, {
         headers: {
           "Content-Type": "application/json",
         },

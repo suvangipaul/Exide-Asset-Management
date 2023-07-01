@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./AddElements.css";
+import axios from "axios";
 
 const AddElements = () => {
   const [type, setType] = useState("");
@@ -31,16 +32,43 @@ const AddElements = () => {
       autoInput: autoInput,
     };
 
-    fetch("/FuncPage/addelements", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    //   fetch("/FuncPage/addelements", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data))
+    //     .catch((err) => console.log(err));
+
+    //   // Reset the form inputs
+    //   setType("");
+    //   setMake("");
+    //   setModel("");
+    //   setSerialNo("");
+    //   setDateOfPurchase("");
+    //   setNoOfYears("");
+    // };
+
+    axios
+      .post(
+        "https://exide-asset-management.onrender.com/FuncPage/addelements",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     // Reset the form inputs
     setType("");

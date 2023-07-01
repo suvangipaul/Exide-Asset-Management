@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../Login/responsive";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Container = styled.div`
   width: 100vw;
@@ -99,30 +100,51 @@ const Register = () => {
       pass2: confirmPassword,
     };
 
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    //   fetch("https://exide-asset-management.onrender.com/signup", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       if (data === "pass") {
+    //         // Redirect to the login page
+    //         history("/");
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
+
+    //   // Reset form fields
+    //   //setName("");
+    //   //setLastName("");
+    //   //setUsername("");
+    //   //setEmail("");
+    //   //setPassword("");
+    //   //setConfirmPassword("");
+
+    //   history("/");
+    // };
+
+    axios
+      .post("https://exide-asset-management.onrender.com/signup", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        const data = response.data;
         console.log(data);
         if (data === "pass") {
           // Redirect to the login page
           history("/");
         }
       })
-      .catch((err) => console.log(err));
-
-    // Reset form fields
-    //setName("");
-    //setLastName("");
-    //setUsername("");
-    //setEmail("");
-    //setPassword("");
-    //setConfirmPassword("");
+      .catch((error) => {
+        console.log(error);
+      });
 
     history("/");
   };

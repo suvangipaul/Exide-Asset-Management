@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./DeleteElements.css";
+import axios from "axios";
 
 const DeleteElements = () => {
   const [selectedItem, setSelectedItem] = useState("");
@@ -98,16 +99,35 @@ const DeleteElements = () => {
       value: selectedValue,
     };
 
-    fetch("/FuncPage/editelements", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    //   fetch("https://exide-asset-management.onrender.com//FuncPage/editelements", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data))
+    //     .catch((err) => console.log(err));
+    // };
+
+    axios
+      .post(
+        "https://exide-asset-management.onrender.com//FuncPage/editelements",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleFormSubmit = (e) => {

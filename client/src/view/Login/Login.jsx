@@ -109,14 +109,14 @@ const Login = () => {
     // };
 
     axios
-      .post("https://exide-asset-management.onrender.com/", data, {
+      .post("/", data, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((response) => {
         const data = response.data;
-        console.log(data);
+        console.log("test", data);
         // Check data value and redirect accordingly
         if (data === "pass") {
           // Redirect to dashboard

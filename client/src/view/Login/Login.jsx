@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../Login/responsive";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Container = styled.div`
   width: 100vw;
@@ -81,15 +82,40 @@ const Login = () => {
       pass: password,
     };
 
-    fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    //   fetch("/", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       // Check data value and redirect accordingly
+    //       if (data === "pass") {
+    //         // Redirect to dashboard
+    //         navigate("/landingpage");
+    //       } else {
+    //         // Redirect to the same page
+    //         navigate("/");
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
+
+    //   // Reset form fields
+    //   //setUsername("");
+    //   //setPassword("");
+    // };
+
+    axios
+      .post("/", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        const data = response.data;
         console.log(data);
         // Check data value and redirect accordingly
         if (data === "pass") {
@@ -100,11 +126,10 @@ const Login = () => {
           navigate("/");
         }
       })
-      .catch((err) => console.log(err));
-
+      .catch((error) => console.log(error));
     // Reset form fields
-    //setUsername("");
-    //setPassword("");
+    // setUsername('');
+    // setPassword('');
   };
 
   return (

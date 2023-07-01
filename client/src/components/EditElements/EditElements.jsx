@@ -114,8 +114,8 @@ const EditElements = () => {
     // };
 
     axios
-      .put(
-        "https://exide-asset-management.onrender.com//FuncPage/editelements",
+      .post(
+        "https://exide-asset-management.onrender.com/FuncPage/editelements",
         data,
         {
           headers: {
@@ -126,10 +126,6 @@ const EditElements = () => {
       .then((response) => {
         const data = response.data;
         console.log(data);
-        showSuccessMessage(); // Display success message
-        setTimeout(() => {
-          window.location.reload(); // Refresh the page
-        }, 1000); // Wait for 1 second before refreshing
       })
       .catch((error) => {
         console.log(error);
@@ -161,27 +157,43 @@ const EditElements = () => {
       assetTag: generatedInput,
     };
 
-    fetch(
-      "https://exide-asset-management.onrender.com//FuncPage/editelements",
-      {
-        method: "PUT",
+    //   fetch("/FuncPage/editelements", {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       showSuccessMessage(); // Display success message
+    //       setTimeout(() => {
+    //         window.location.reload(); // Refresh the page
+    //       }, 1000); // Wait for 1 seconds before refreshing
+    //     })
+    //     .catch((err) => console.log(err));
+    //   // .then((data) => console.log(data))
+    //   // .catch((err) => console.log(err));
+    // };
+
+    axios
+      .put("/FuncPage/editelements", data, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
+      })
+      .then((response) => {
+        const data = response.data;
         console.log(data);
         showSuccessMessage(); // Display success message
         setTimeout(() => {
           window.location.reload(); // Refresh the page
-        }, 1000); // Wait for 1 seconds before refreshing
+        }, 1000); // Wait for 1 second before refreshing
       })
-      .catch((err) => console.log(err));
-    // .then((data) => console.log(data))
-    // .catch((err) => console.log(err));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleCancelClick = () => {

@@ -99,7 +99,7 @@ const DeleteElements = () => {
       value: selectedValue,
     };
 
-    //   fetch("https://exide-asset-management.onrender.com//FuncPage/editelements", {
+    //   fetch("https://exide-asset-management.onrender.com/FuncPage/editelements", {
     //     method: "POST",
     //     headers: {
     //       "Content-Type": "application/json",
@@ -146,23 +146,45 @@ const DeleteElements = () => {
 
     const data = { assetTag: generatedInput };
 
-    fetch("/FuncPage/deleteelements", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    //   fetch("/FuncPage/deleteelements", {
+    //     method: "DELETE",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       setShowPopup(true);
+    //       // Refresh the page after the delete operation
+    //       window.location.reload();
+    //     })
+    //     .catch((err) => console.log(err));
+    //   // .then((data) => console.log(data))
+    //   // .catch((err) => console.log(err));
+    // };
+
+    axios
+      .delete(
+        "https://exide-asset-management.onrender.com/FuncPage/deleteelements",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: JSON.stringify(data),
+        }
+      )
+      .then((response) => {
+        const data = response.data;
         console.log(data);
         setShowPopup(true);
         // Refresh the page after the delete operation
         window.location.reload();
       })
-      .catch((err) => console.log(err));
-    // .then((data) => console.log(data))
-    // .catch((err) => console.log(err));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleCancelClick = () => {

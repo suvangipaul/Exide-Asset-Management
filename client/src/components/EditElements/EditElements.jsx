@@ -180,11 +180,15 @@ const EditElements = () => {
     // };
 
     axios
-      .put("/FuncPage/editelements", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .put(
+        "https://exide-asset-management.onrender.com/FuncPage/editelements",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         const data = response.data;
         console.log(data);

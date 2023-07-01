@@ -1,2 +1,2 @@
 # Exide-Asset-Management
-<img width="934" alt="image" src="https://github.com/suvangipaul/Exide-Asset-Management/assets/81070118/f34f3a9d-d07e-4699-abd5-f024bf08722c">
+<img width="935" alt="image" src="https://github.com/suvangipaul/Exide-Asset-Management/assets/81070118/47d927eb-3d0f-4771-aeb4-494813eddd7f">

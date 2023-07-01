@@ -57,7 +57,7 @@ app.post('/', (req, res) => {
     User.findOne({ userName: userName, password: pass })
         .then(user => {
             if (!user)
-                res.json("cant find user");
+                res.json({ 'userName': userName });
             else {
                 res.json("pass");
             }

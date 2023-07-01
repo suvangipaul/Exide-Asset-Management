@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+// const cors = require('cors')
 const mongoose = require('mongoose');
 
 const db = require('./config/keys').MongoURI;
@@ -7,7 +8,11 @@ const db = require('./config/keys').MongoURI;
 const { User, Crud } = require('./model/login_regis');
 
 //deploy
-
+// app.use(cors({
+//     origin: [""],
+//     methods: ["POST", "GET"],
+//     credentials: true
+// }));
 
 //body Parser
 app.use(express.urlencoded({
@@ -59,6 +64,35 @@ app.post('/', (req, res) => {
         })
         .catch(err => console.log(err));
 })
+
+//Landing Page
+app.get('/LandingPage', (req, res) => {
+
+    //Desktops, laptop, Servers, Printers, N/W Switches
+    let ans = [0, 0, 0, 0, 0];
+
+    Crud.find({})
+        .then(users => {
+
+            //if no user exists
+            if (!users) {
+                res.json("no user exists");
+            } else {
+                users.map(user => {
+                    if (user.type === 'Desktop')
+                        ans[0]++;
+                    else if (user.type === 'Laptop') ans[1]++;
+                    else if (user.type === 'Server') ans[2]++;
+                    else if (user.type === 'Printer') ans[3]++;
+                    else if (user.type === 'N-W Switches') ans[4]++;
+                })
+                for (let it = 0; it < ans.length; it++)
+                    console.log(ans[it], "\n");
+                res.json(ans);
+            }
+        })
+        .catch(err => console.log(err));
+});
 
 //ADD ELEMENTS
 

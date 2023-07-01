@@ -11,10 +11,13 @@ const { User, Crud } = require('./model/login_regis');
 app.use(cors());
 
 //body Parser
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(express.json());
+// app.use(express.urlencoded({
+//     extended: true
+// }));
+// app.use(express.json());
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Connect to Database
 mongoose.connect(db, { useNewUrlParser: true })
